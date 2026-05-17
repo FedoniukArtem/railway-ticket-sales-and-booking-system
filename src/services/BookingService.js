@@ -7,16 +7,18 @@ export const getWagonSeats = (trainId, wagonNumber) => {
         return JSON.parse(savedSeats);
     }
 
-    // Якщо даних немає, генеруємо 20 місць. Парні — заброньовані (red), непарні — вільні (green)[cite: 88, 90].
+    // Якщо даних в пам'яті немає, генеруємо 20 місць.
+    // Кожне місце має 30% шанс бути заброньованим випадковим чином при першому створенні.
     const initialSeats = Array.from({ length: 20 }, (_, i) => ({
         id: i + 1,
-        status: (i + 1) % 4 === 0 ? 'booked' : 'free'
+        status: Math.random() < 0.3 ? 'booked' : 'free'
     }));
 
     localStorage.setItem(storageKey, JSON.stringify(initialSeats));
     return initialSeats;
 };
 
+// Зберігає заброньовані користувачем місця, змінюючи їхній стан на 'booked'.
 export const saveBookingToStorage = (trainId, wagonNumber, selectedSeatIds) => {
     const storageKey = `seats_train_${trainId}_wagon_${wagonNumber}`;
     const currentSeats = getWagonSeats(trainId, wagonNumber);

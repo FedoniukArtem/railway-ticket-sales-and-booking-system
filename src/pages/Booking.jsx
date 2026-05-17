@@ -33,7 +33,7 @@ const Booking = () => {
 
     const handleBookingSubmit = (passengerData) => {
         saveBookingToStorage(trainId, selectedWagon, selectedSeats);
-        toast.success(`Успішно заброньовано місця: ${selectedSeats.join(', ')} для ${passengerData.name}!`);[cite: 150]
+        toast.success(`Успішно заброньовано місця: ${selectedSeats.join(', ')} для ${passengerData.name}!`);
 
         // Перезавантажуємо стан місць, щоб вони стали червоними (заброньованими)
         setSeats(getWagonSeats(trainId, selectedWagon));

@@ -10,9 +10,9 @@ const BookingForm = ({ onSubmit, selectedSeatsCount }) => {
 
     const validate = () => {
         const newErrors = {};
-        if (!formData.name.trim()) newErrors.name = "Ім'я обов'язкове";[cite: 145, 148]
-        if (!formData.phone.trim()) newErrors.phone = "Телефон обов'язковий";[cite: 146, 148]
-        if (!formData.email.includes('@')) newErrors.email = "Некоректний Email";[cite: 147, 148]
+        if (!formData.name.trim()) newErrors.name = "Ім'я обов'язкове";
+        if (!formData.phone.trim()) newErrors.phone = "Телефон обов'язковий";
+        if (!formData.email.includes('@')) newErrors.email = "Некоректний Email";
         return newErrors;
     };
 
